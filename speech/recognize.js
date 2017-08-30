@@ -64,7 +64,7 @@ function syncRecognize (filename, encoding, sampleRateHertz, languageCode) {
       const response = data[0];
       const transcription = response.results.map(result =>
           result.alternatives[0].transcript).join('\n');
-      console.log(`Transcription: `, transcription);
+      console.log(`Transcription: ${transcription}`);
     })
     .catch((err) => {
       console.error('ERROR:', err);
@@ -112,7 +112,7 @@ function syncRecognizeGCS (gcsUri, encoding, sampleRateHertz, languageCode) {
       const response = data[0];
       const transcription = response.results.map(result =>
           result.alternatives[0].transcript).join('\n');
-      console.log(`Transcription: `, transcription);
+      console.log(`Transcription: ${transcription}`);
     })
     .catch((err) => {
       console.error('ERROR:', err);
@@ -161,7 +161,7 @@ function syncRecognizeWords (filename, encoding, sampleRateHertz, languageCode) 
     .then((data) => {
       const response = data[0];
       response.results.forEach((result) => {
-        console.log(`Transcription: `, result.alternatives[0].transcript);
+        console.log(`Transcription: ${result.alternatives[0].transcript}`);
         result.alternatives[0].words.forEach((wordInfo) => {
           // NOTE: If you have a time offset exceeding 2^32 seconds, use the
           // wordInfo.{x}Time.seconds.high to calculate seconds.
@@ -338,7 +338,7 @@ function asyncRecognizeGCSWords (gcsUri, encoding, sampleRateHertz, languageCode
     .then((data) => {
       const response = data[0];
       response.results.forEach((result) => {
-        console.log(`Transcription: `, result.alternatives[0].transcript);
+        console.log(`Transcription: ${result.alternatives[0].transcript}`);
         result.alternatives[0].words.forEach((wordInfo) => {
           // NOTE: If you have a time offset exceeding 2^32 seconds, use the
           // wordInfo.{x}Time.seconds.high to calculate seconds.
